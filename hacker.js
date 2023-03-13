@@ -77,7 +77,7 @@ export async function main(ns) {
 
 
         let adjustedTargetRAMslice = targetRAMslice;
-        [hackstates, adjustedTargetRAMslice] = adjust(ns, servers, freeRams, hackables, hackstates);
+        [hackstates, adjustedTargetRAMslice] = adjust(ns, freeRams, hackables, hackstates);
 
 
         // ns.tprint(`hackable:${[...hackables.values()]}`)
@@ -91,7 +91,7 @@ export async function main(ns) {
     }
 }
 
-function adjust(ns, servers, freeRams, hackables, hackstates) {
+function adjust(ns, freeRams, hackables, hackstates) {
 
     let adjustedTargetRAMslice = targetRAMslice;
 
@@ -651,6 +651,8 @@ function timingCalculations(ns, hostname) {
         hackCompTime,
         weakenCompTime]
 
+
+
 }
 
 //function scores all servers, prunes zero scores, then averages scores and 
@@ -694,7 +696,7 @@ function targetList(ns) {
             //mock = ns.formulas.mockServer();
             //mock.hackDifficulty = ns.getServerMinSecurityLevel(serv);
             serverScores[i] = (ns.getServerMaxMoney(serv) / (growCompTime + hackCompTime + weakenCompTime)) * ns.formulas.hacking.hackChance(ns.getServer(serv), ns.getPlayer());
-            executionTimes[i]
+            executionTimes[i] = growCompTime + hackCompTime + weakenCompTime;
         }
     }
 
@@ -1007,8 +1009,6 @@ function scanAndHack(ns) {
                 accesibleServers.add(server);
             }
         }
-
-
     }
     return accesibleServers;
 }
