@@ -20,11 +20,10 @@ let globalMemoryUsage = 1;
 let targetRAMslice = 0.75;    //values less than 1 seem to increase the dynamic cycling of the target list
 //values less than 0.5 seem to hinder production
 
-//turn on/off shotgun "batching" mode. If this is true, make sure fullMonty is false.
+//turn on/off shotgun "batching" mode.
 const shotgunBatching = false;
 
 //turn on/off full-monty mode (turns off limitation of scripts running multiple times on the same server)
-//ensure shotgunBatching is false if this is true
 const fullMonty = false;
 
 //limit targets to the number specified, otherwise target all prioritized targets
@@ -1009,6 +1008,8 @@ function scanAndHack(ns) {
                 accesibleServers.add(server);
             }
         }
+
+
     }
     return accesibleServers;
 }
