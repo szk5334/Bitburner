@@ -16,6 +16,7 @@ export async function main(ns) {
 		'stock-sell.js',
 		'pserv-del.js',
 		'pserv-purch.js',
+		'pserv-upgarde.js'
 		'pserv-kill.js',
 		'root-kill.js',
 		'targetList.js',
